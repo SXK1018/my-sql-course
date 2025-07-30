@@ -1,10 +1,9 @@
 SELECT
     ps.PatientId
     , ps.AdmittedDate
-    , ps.Hospital
-    , ps.Ward
-    , ps.Tariff
+    , h.HospitalType
+    , h.HospitalSize
 FROM
     PatientStay ps
-WHERE
-    ps.AdmittedDate BETWEEN '2024-03-02' AND '2024-03-04'
+JOIN DimHospital h ON
+    ps.Hospital = h.Hospital;
