@@ -44,14 +44,21 @@ FROM
 Filter rows  with the WHERE clause
 Note: we can also AND and OR clauses
 */
+
 SELECT
     ps.PatientId
-    , ps.AdmittedDate
-    , ps.Hospital
-    , ps.Ward
-    , ps.Tariff
+    ,ps.AdmittedDate
+    ,ps.Hospital
+    ,ps.Ward
+    ,ps.Tariff
 FROM
-    PatientStay ps;
+    PatientStay ps
+WHERE ps.Hospital IN ('Kingston', 'PRUH')
+    AND ps.Ward LIKE '%Surgery'
+    AND ps.AdmittedDate BETWEEN '2024-02-27' AND '2024-03-01'
+ORDER BY 
+    ps.AdmittedDate DESC,
+    ps.Ward ASC;
  
 /*
 some alternative WHERE clauses.  Try these out
